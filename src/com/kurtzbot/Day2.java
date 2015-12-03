@@ -1,9 +1,6 @@
 package com.kurtzbot;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 public class Day2 implements Solver{
 
@@ -20,7 +17,7 @@ public class Day2 implements Solver{
 		int totalRibbon = 0;
 		for(String box : args) {
 			Integer[] sides = Arrays.asList(box.split("x")).stream()
-					.map(s -> Integer.parseInt(s))
+					.map(Integer::parseInt)
 					.sorted()
 					.toArray(Integer[]::new);
 
