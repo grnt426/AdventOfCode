@@ -1,7 +1,9 @@
 package com.kurtzbot;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class Day2 implements Solver{
 
@@ -17,12 +19,10 @@ public class Day2 implements Solver{
 		int totalWrappingPaper = 0;
 		int totalRibbon = 0;
 		for(String box : args) {
-			String[] sidesStr = box.split("x");
-			int[] sides = new int[3];
-			sides[0] = Integer.parseInt(sidesStr[0]);
-			sides[1] = Integer.parseInt(sidesStr[1]);
-			sides[2] = Integer.parseInt(sidesStr[2]);
-			Arrays.sort(sides);
+			Integer[] sides = Arrays.asList(box.split("x")).stream()
+					.map(s -> Integer.parseInt(s))
+					.sorted()
+					.toArray(Integer[]::new);
 
 			int face1 = sides[0] * sides[1];
 			int face2 = sides[1] * sides[2];
